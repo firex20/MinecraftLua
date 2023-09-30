@@ -597,13 +597,19 @@ do
 
   -- Back to start
   turtle.turnRight()
-  turtle.forward()
-  y = y-1
+  while y ~= -1 do
+    turtle.forward()
+    y = y-1
+  end
   turtle.turnRight()
   while x ~= 0 do
     turtle.forward()
     x = x-1
   end
+  turtle.turnRight()
+  turtle.forward()
+  y = y+1
+  turtle.turnLeft()
 
   sleep(TransformationTime)
 end
