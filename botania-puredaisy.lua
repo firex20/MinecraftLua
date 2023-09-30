@@ -183,10 +183,44 @@ do
             turtle.place()
           end
         end
-
         turtle.turnRight()
       end
+    end
+    turtle.turnLeft()
+    while x ~= 2 do
+      local check = checkBlock("botania:livingrock")
 
+      if check == "NoBlock" then
+        turtle.forward()
+        x = x-1
+        if x > 1 then
+          placeBlockBehind(1)
+        end
+      elseif check == true then
+        turtle.select(2)
+        turtle.dig(pickaxe)
+        turtle.forward()
+        x = x-1
+        if x > 1 then
+          placeBlockBehind(1)
+        end
+      else
+        check = checkBlock("minecraft:stone")
+        if check == true then
+          check = checkBlock("botania:livingrock")
+          while check == false do
+            sleep(3)
+            check = checkBlock("botania:livingrock")
+          end
+          turtle.select(2)
+          turtle.dig(pickaxe)
+          turtle.forward()
+          x = x-1
+          if x > 1 then
+            placeBlockBehind(1)
+          end
+        end
+      end
     end
   end
 
