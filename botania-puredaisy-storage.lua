@@ -22,19 +22,28 @@ end
 
 while true do
     local allFull
-    local rockChest = peripheral.wrap("techreborn:storage_unit_0")
-    local woodChest = peripheral.wrap("bottom")
+    local rockChest = peripheral.wrap("back")
+    local woodChest = peripheral.wrap("minecraft:barrel_0")
     local rockChestLimit = ItemLimit(rockChest)
     local woodChestLimit = ItemLimit(woodChest)
     local rockChestCount = countItem(rockChest, "botania:livingrock")
     local woodChestCount = countItem(woodChest, "botania:livingwood_log")
+    local rockChestFull
+    local woodChestFull
 
-    term.clear()
+    if rockChestCount == rockChestLimit then
+        rockChestFull = true
+    end
+    if woodChestCount == woodChestLimit then
+        woodChestFull = true
+    end
+
     term.setCursorPos(0, 0)
-    print("LivingWood: "..woodChestCount.."/"..woodChestLimit)
-    print("LivingRock: "..rockChestCount.."/"..rockChestLimit)
+    term.clear()
+    term.write("LivingWoodFull: "..woodChestFull)
+    term.write("LivingRockFull: "..rockChestFull)
 
-    rednet.open("left")
+    rednet.open("top")
     if rockChestCount == rockChestLimit and woodChestCount == woodChestLimit then
         allFull = true
     else
