@@ -30,22 +30,28 @@ while true do
     local woodChestCount = countItem(woodChest, "botania:livingwood_log")
     local rockChestFull
     local woodChestFull
+    local rockChestString
+    local woodChestString
 
     if rockChestCount == rockChestLimit then
         rockChestFull = true
+        rockChestString = "true"
     else
-        rockChestFull = false 
+        rockChestFull = false
+        rockChestString = "false"
     end
     if woodChestCount == woodChestLimit then
         woodChestFull = true
+        woodChestString = "true"
     else
         woodChestFull = false
+        woodChestString = "False"
     end
 
     term.setCursorPos(0, 0)
     term.clear()
-    term.write("LivingWoodFull: "..woodChestFull)
-    term.write("LivingRockFull: "..rockChestFull)
+    term.write("LivingWoodFull: "..woodChestString)
+    term.write("LivingRockFull: "..rockChestString)
 
     rednet.open("top")
     if rockChestFull and woodChestFull then
