@@ -1,4 +1,4 @@
-local TransformationTime = 40
+local TransformationTime = 1
 local x = 0
 local y = 0
 local axe = "left"
