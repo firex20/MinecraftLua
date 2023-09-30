@@ -11,6 +11,7 @@ do
   local StoneChest = peripheral.wrap("left")
   local DummyChest = peripheral.wrap("front")
   print(peripheral.getName(DummyChest))
+  print(peripheral.getNames())
   local StoneCount = 0
   local StoneOk = false
 
