@@ -1,5 +1,8 @@
 local TransformationTime = 100
+local x = 0
+local y = 0
 
+-- Function to count the quantity of specified items in a chest/inventory peripheral
 local function countStone(chest, itemMatch)
   local count = 0
   for slot, item in pairs(chest.list())
@@ -9,6 +12,32 @@ local function countStone(chest, itemMatch)
     end
   end
   return count
+end
+
+local function checkBlock(blockMatch)
+  local result
+  local block, data = turtle.inspect()
+
+  if block then
+    if data.name == blockMatch then
+      result = true
+    else
+      result = false
+    end
+  else
+    result = "NoBlock"
+  end
+
+  return result
+end
+
+local function placeBlockBehind(slot)
+  turtle.turnLeft()
+  turtle.turnLeft()
+  turtle.select(slot)
+  turtle.place()
+  turtle.turnRight()
+  turtle.turnRight()
 end
 
 while true
@@ -50,6 +79,49 @@ do
     end
   end
   
-  turtle.turnLeft()
+  -- Start mining living stone and wood
+  turtle.turnRight()
+
+  while x ~= 2 and y ~= 1 do
+    while x ~= 4 do
+      turtle.forward()
+      x = x+1
+      local check = checkBlock("botania:livingrock")
+
+      if check == "NoBlock" then
+        turtle.forward()
+        x = x+1
+        if x > 2 then
+          placeBlockBehind(1)
+        end
+      elseif check == true then
+        turtle.select(2)
+        turtle.dig()
+        turtle.forward()
+        x = x+1
+        if x > 2 then
+          placeBlockBehind(1)
+        end
+      else
+        check = checkBlock("minecraft:stone")
+        if check == true then
+          check = checkBlock("botania:livingrock")
+          while check == false do
+            sleep(3)
+            check = checkBlock("botania:livingrock")
+          end
+          turtle.select(2)
+          turtle.dig()
+          turtle.forward()
+          x = x+1
+          if x > 2 then
+            placeBlockBehind(1)
+          end
+        end
+      end
+
+    end
+  end
+
   sleep(TransformationTime)
 end
