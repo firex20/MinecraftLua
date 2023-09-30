@@ -45,13 +45,13 @@ while true do
         woodChestString = "true"
     else
         woodChestFull = false
-        woodChestString = "False"
+        woodChestString = "false"
     end
 
     term.setCursorPos(0, 0)
     term.clear()
-    term.write("LivingWoodFull: "..woodChestString)
-    term.write("LivingRockFull: "..rockChestString)
+    print("LivingWoodFull: "..woodChestString)
+    print("LivingRockFull: "..rockChestString)
 
     rednet.open("top")
     if rockChestFull and woodChestFull then
@@ -59,7 +59,7 @@ while true do
     else
         allFull = false
     end
-    rednet.send(69, allFull, "firex_daisy")
+    rednet.broadcast(allFull, "firex_daisy")
 
     sleep(5)
 end

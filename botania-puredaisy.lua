@@ -3,6 +3,7 @@ local x = 0
 local y = 0
 local axe = "left"
 local pickaxe = "right"
+local reps = 0
 
 -- Function to count the quantity of specified items in a chest/inventory peripheral
 local function countItem(chest, itemMatch)
@@ -44,6 +45,17 @@ end
 
 while true
 do
+  -- Check if inventory full
+  turtle.select(14)
+  turtle.equipRight()
+  rednet.open("right")
+  local id, invfull = rednet.receive("firex_daisy")
+  while invfull == true do
+    local id, invfull = rednet.receive("firex_daisy")
+    sleep(5)
+  end
+  turtle.select(14)
+  turtle.equipRight()
   -- Refuel if needed
   local bucket = turtle.getItemDetail(15)
 
