@@ -1,3 +1,5 @@
+-- Este programa se descarga los programas de este repositorio
+-- Usage: git-get <nombre-programa>.lua
 local repo = "https://raw.githubusercontent.com/firex20/MinecraftLua/main/"
 local fullfile = repo..arg[1]
 local curdir = shell.dir()
