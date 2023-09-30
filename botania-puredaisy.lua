@@ -384,7 +384,7 @@ do
   x = x-1
 
   while x ~= 7 and y ~= 4 do
-    while x ~= 4 do
+    while x ~= 5 do
       local check = checkBlock("botania:livingwood_log")
 
       if check == "NoBlock" then
@@ -419,7 +419,6 @@ do
         end
       end
     end
-    turtle.turnLeft()
     turtle.turnLeft()
     while y ~= 0 do
       local check = checkBlock("botania:livingwood_log")
