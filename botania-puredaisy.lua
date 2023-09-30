@@ -7,10 +7,9 @@ do
   turtle.turnRight()
   turtle.select(16)
   turtle.place()
-  
+  sleep(1)
   local StoneChest = peripheral.wrap("left")
   local DummyChest = peripheral.wrap("front")
-  print(peripheral.getNames())
   print(peripheral.getName(DummyChest))
   local StoneCount = 0
   local StoneOk = false
