@@ -33,9 +33,13 @@ while true do
 
     if rockChestCount == rockChestLimit then
         rockChestFull = true
+    else
+        rockChestFull = false 
     end
     if woodChestCount == woodChestLimit then
         woodChestFull = true
+    else
+        woodChestFull = false
     end
 
     term.setCursorPos(0, 0)
@@ -44,7 +48,7 @@ while true do
     term.write("LivingRockFull: "..rockChestFull)
 
     rednet.open("top")
-    if rockChestCount == rockChestLimit and woodChestCount == woodChestLimit then
+    if rockChestFull and woodChestFull then
         allFull = true
     else
         allFull = false
