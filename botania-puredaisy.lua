@@ -1,7 +1,7 @@
 local TransformationTime = 100
 
 local function countStone(chest, itemMatch)
-  local count
+  local count = 0
   for slot, item in pairs(chest.list())
   do
     if item.name == itemMatch then
