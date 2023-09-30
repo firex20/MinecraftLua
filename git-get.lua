@@ -7,7 +7,7 @@ then
     local confir = io.read()
     if confir == "" or confir == "Y"
     then
-        shell.run("rm", "./"..arg[1])
+        shell.run("rm", "/"..curdir.."/"..arg[1])
         shell.run("wget", fullfile, arg[1])
     else
         print("Descarga abortada!")
