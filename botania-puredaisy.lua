@@ -1,9 +1,20 @@
 local TransformationTime = 100
 
+local function countStone(chest, itemMatch)
+  local count
+  for slot, item in pairs(chest.list())
+  do
+    if item.name == itemMatch then
+      count = count + item.count
+    end
+  end
+  return count
+end
+
 while true
 do
   -- Collect stone from chest
-    -- Check if there is enough stone in the chest
+    -- Check if there is enough stone in the chest and take 16
   turtle.turnRight()
   turtle.select(16)
   turtle.place()
@@ -11,16 +22,10 @@ do
 
   local StoneChest = peripheral.wrap("left")
   local DummyChest = peripheral.wrap("front")
-  local StoneCount = 0
+  local StoneCount = countStone(StoneChest, "minecraft:stone")
   local StoneOk = false
+  print(StoneCount)
 
-
-  for slot, item in pairs(StoneChest.list())
-  do
-    if item.name == "minecraft:stone" then
-      StoneCount = StoneCount + item.count
-    end
-  end
   while StoneOk == false do
     if StoneCount >= 16
     then
@@ -30,7 +35,7 @@ do
         if item.name == "minecraft:stone" and item.count >= 16
         then
           StoneChest.pushItems(peripheral.getName(DummyChest), slot, 16, 1)
-          turtle.select(2)
+          turtle.select(1)
           turtle.suck(16)
           turtle.select(16)
           turtle.dig()
@@ -39,6 +44,9 @@ do
           slot = slot + 1
         end
       end
+    else
+      sleep(10)
+      StoneCount = countStone(StoneChest, "minecraft:stone")
     end
   end
   
