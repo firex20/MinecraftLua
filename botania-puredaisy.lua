@@ -420,6 +420,7 @@ do
       end
     end
     turtle.turnLeft()
+    turtle.turnLeft()
     while y ~= 0 do
       local check = checkBlock("botania:livingwood_log")
 
