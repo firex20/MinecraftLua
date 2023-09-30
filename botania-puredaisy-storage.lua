@@ -26,10 +26,11 @@ while true do
     local woodChest = peripheral.wrap("bottom")
     local rockChestLimit = ItemLimit(rockChest)
     local woodChestLimit = ItemLimit(woodChest)
-    local rockChestCount = countItem(rockChest)
-    local woodChestCount = countItem(woodChest)
+    local rockChestCount = countItem(rockChest, "botania:livingrock")
+    local woodChestCount = countItem(woodChest, "botania:livingwood_log")
 
     term.clear()
+    term.setCursorPos(0, 0)
     print("LivingWood: "..woodChestCount.."/"..woodChestLimit)
     print("LivingRock: "..rockChestCount.."/"..rockChestLimit)
 
