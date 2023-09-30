@@ -81,11 +81,11 @@ do
   
   -- Start mining living stone and wood
   turtle.turnRight()
+  turtle.forward()
+  x = x+1
 
   while x ~= 2 and y ~= 1 do
     while x ~= 4 do
-      turtle.forward()
-      x = x+1
       local check = checkBlock("botania:livingrock")
 
       if check == "NoBlock" then
