@@ -333,6 +333,7 @@ do
         LavaCount = countItem(LavaChest, "minecraft:lava_bucket")
       end
     end
+    turtle.turnLeft()
   end
   turtle.turnLeft()
   while y ~= 5 do
