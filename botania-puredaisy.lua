@@ -256,34 +256,6 @@ do
           end
         end
       end
-
-      if y == 2 or y == 3 then
-        turtle.turnLeft()
-        check = checkBlock("botania:livingrock")
-        if check == "NoBlock" then
-          turtle.select(1)
-          turtle.place()
-        elseif check == true then
-          turtle.select(2)
-          turtle.dig(pickaxe)
-          turtle.select(1)
-          turtle.place()
-        else
-          check = checkBlock("minecraft:stone")
-          if check == true then
-            check = checkBlock("botania:livingrock")
-            while check == false do
-              sleep(3)
-              check = checkBlock("botania:livingrock")
-            end
-            turtle.select(2)
-            turtle.dig(pickaxe)
-            turtle.select(1)
-            turtle.place()
-          end
-        end
-        turtle.turnRight()
-      end
     end
   end
 
@@ -291,6 +263,25 @@ do
   turtle.forward()
   x = x-1
   placeBlockBehind(1)
+  turtle.turnLeft()
+
+  while x ~= -1 do
+    turtle.forward()
+    x = x-1
+  end
+  turtle.turnLeft()
+  while y ~= 8 do
+    turtle.forward()
+    y = y+1
+  end
+  turtle.turnLeft()
+  while x ~= 3 do
+    turtle.forward()
+    x = x+1
+  end
+  turtle.turnRight()
+  turtle.forward()
+  y = y+1
 
   sleep(TransformationTime)
 end
