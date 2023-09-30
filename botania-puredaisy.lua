@@ -1,6 +1,8 @@
 local TransformationTime = 100
 local x = 0
 local y = 0
+local axe = "right"
+local pickaxe = "left"
 
 -- Function to count the quantity of specified items in a chest/inventory peripheral
 local function countStone(chest, itemMatch)
@@ -67,7 +69,7 @@ do
           turtle.select(1)
           turtle.suck(16)
           turtle.select(16)
-          turtle.dig()
+          turtle.dig(axe)
           StoneOk = true
         else
           slot = slot + 1
@@ -96,7 +98,7 @@ do
         end
       elseif check == true then
         turtle.select(2)
-        turtle.dig()
+        turtle.dig(pickaxe)
         turtle.forward()
         x = x+1
         if x > 2 then
@@ -111,7 +113,7 @@ do
             check = checkBlock("botania:livingrock")
           end
           turtle.select(2)
-          turtle.dig()
+          turtle.dig(pickaxe)
           turtle.forward()
           x = x+1
           if x > 2 then
