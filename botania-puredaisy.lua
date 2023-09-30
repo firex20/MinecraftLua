@@ -276,23 +276,23 @@ do
   placeBlockBehind(1)
   turtle.turnLeft()
 
-  while x ~= -1 do
+  while y ~= -1 do
     turtle.forward()
-    x = x-1
+    y = y-1
   end
   turtle.turnLeft()
-  while y ~= 8 do
-    turtle.forward()
-    y = y+1
-  end
-  turtle.turnLeft()
-  while x ~= 3 do
+  while x ~= 8 do
     turtle.forward()
     x = x+1
   end
+  turtle.turnLeft()
+  while y ~= 3 do
+    turtle.forward()
+    y = y+1
+  end
   turtle.turnRight()
   turtle.forward()
-  y = y+1
+  x = x+1
 
   -- Recolect lava bucket if empty
   local bucket = turtle.getItemDetail(15)
