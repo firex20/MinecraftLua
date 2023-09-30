@@ -8,9 +8,9 @@ do
   turtle.select(16)
   turtle.place()
   sleep(1)
+
   local StoneChest = peripheral.wrap("left")
   local DummyChest = peripheral.wrap("front")
-  print(peripheral.getName(DummyChest))
   local StoneCount = 0
   local StoneOk = false
 
@@ -24,13 +24,13 @@ do
   while StoneOk == false do
     if StoneCount >= 16
     then
-      select(2)
       local slot = 1
       while StoneOk == false do
         local item = StoneChest.getItemDetail(slot)
         if item.name == "minecraft:stone" and item.count >= 16
         then
           StoneChest.pushItems(peripheral.getName(DummyChest), slot, 16, 1)
+          turtle.select(2)
           turtle.suck(16)
           turtle.select(16)
           turtle.dig()
