@@ -48,7 +48,7 @@ while true do
         woodChestString = "false"
     end
 
-    term.setCursorPos(0, 0)
+    term.setCursorPos(50, 0)
     term.clear()
     print("LivingWoodFull: "..woodChestString)
     print("LivingRockFull: "..rockChestString)

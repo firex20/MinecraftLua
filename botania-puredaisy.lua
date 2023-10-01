@@ -581,6 +581,7 @@ do
   end
   turtle.turnLeft()
   turtle.up()
+  turtle.up()
 
   -- deposit livingstone
   turtle.select(2)
@@ -595,6 +596,7 @@ do
   turtle.select(4)
   turtle.drop()
 
+  turtle.down()
   turtle.down()
 
   -- Delete exces
