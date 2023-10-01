@@ -51,7 +51,7 @@ do
   rednet.open("right")
   local id, invfull = rednet.receive("firex_daisy")
   while invfull == true do
-    local id, invfull = rednet.receive("firex_daisy")
+    id, invfull = rednet.receive("firex_daisy")
     sleep(5)
   end
   turtle.select(14)
