@@ -14,7 +14,7 @@ local function pushItem(chestFrom, chestTo, itemMatch, quantity, maxSlots)
         
         if item ~= nil then
             if item.name == itemMatch and item.count >= quantity then
-                chestFrom.pushItems(chestTo, slot, quantity)
+                chestFrom.pushItems(peripheral.getName(chestTo), slot, quantity)
                 match = true
             else
                 slot = slot + 1
@@ -37,7 +37,7 @@ while true do
         pushItem(tntChest, dispenser, "minecraft:tnt", 1, 27)
     end
 
-    redstone.setOutput("right", true)
+    redstone.setOutput("back", true)
     sleep(0.5)
-    redstone.setOutput("right", false)
+    redstone.setOutput("back", false)
 end
