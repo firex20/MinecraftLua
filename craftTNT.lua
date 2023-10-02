@@ -1,4 +1,4 @@
-local DummyChest = peripheral.wrap("down")
+local DummyChest = peripheral.wrap("bottom")
 
 -- Function to count the quantity of specified items in a chest/inventory peripheral
 local function countItem(chest, itemMatch)
@@ -31,7 +31,7 @@ while true do
     local TntBarrel = peripheral.wrap("front")
     local SandChest = peripheral.wrap("back")
     local GunpowderBarrel = peripheral.wrap("top")
-    local TntCount = countItem(TntBarrel, "minecraft:tnt")
+    local TntCount = countItem(TntBarrel, "minecraft:gunpowder")
 
     if TntCount < 128 then
         -- Craft the tnt and drop it in the barrel
