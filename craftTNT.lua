@@ -1,4 +1,5 @@
 local DummyChest = peripheral.wrap("bottom")
+local Trash = peripheral.wrap("left")
 
 -- Function to count the quantity of specified items in a chest/inventory peripheral
 local function countItem(chest, itemMatch)
@@ -16,15 +17,23 @@ end
 local function takeItem(chest, itemMatch, quantity)
     local slot = 1
     local match = false
+    local checkSlot = DummyChest.getItemDetail(1)
+
+    if checkSlot ~= nil then
+        DummyChest.pushItems(peripheral.getName(Trash), 1, 64, 1)
+    end
 
     while match == false do
         local item = chest.getItemDetail(slot)
-        if item.name == itemMatch and item.count >= quantity then
-            chest.pushItems(peripheral.getName(DummyChest), slot, quantity, 1)
-            turtle.suckDown(quantity)
-            match = true
+        if item ~= nil then
+            if item.name == itemMatch and item.count >= quantity then
+                chest.pushItems(peripheral.getName(DummyChest), slot, quantity, 1)
+                turtle.suckDown(quantity)
+                match = true
+            end
         else
             slot = slot + 1
+        
         end
     end
 end
@@ -60,5 +69,21 @@ while true do
         turtle.craft(16)
         turtle.drop(16)
     end
+
+    -- Empty inventory
+    local slots = {1, 2, 3, 5, 6, 7, 9, 10, 11}
+    local checkSlot = DummyChest.getItemDetail(1)
+    
+    if checkSlot ~= nil then
+        DummyChest.pushItems(peripheral.getName(Trash), 1, 64, 1)
+    end
+
+    for key, slot in pairs(slots)
+    do
+        turtle.select(slot)
+        turtle.dropDown()
+        DummyChest.pushItems(peripheral.getName(Trash), 1, 64, 1)
+    end
+
     sleep(10)
 end
