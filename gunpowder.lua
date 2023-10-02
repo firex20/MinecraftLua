@@ -48,7 +48,7 @@ end
 while true do
     -- Crear polvora hasta que el barril este lleno
     local gunpowderChest = peripheral.wrap("left")
-    local openCrate = peripheral.wrap("botania:open_crate_1")
+    local openCrate = peripheral.wrap("minecraft:barrel_3")
     local flintChest = peripheral.wrap("back")
     local gunpowderLimit = ItemLimit(gunpowderChest)
     local gunpowderCount = countItem(gunpowderChest, "minecraft:gunpowder")
@@ -68,7 +68,7 @@ while true do
         else
             pushItem(flintChest, openCrate, "minecraft:flint", 64, 9)
         end
-        sleep(5)
+        sleep(4)
 
         gunpowderLimit = ItemLimit(gunpowderChest)
         gunpowderCount = countItem(gunpowderChest, "minecraft:gunpowder")
