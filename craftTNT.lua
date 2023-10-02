@@ -1,5 +1,6 @@
 local DummyChest = peripheral.wrap("bottom")
-local Trash = peripheral.wrap("left")
+local Trash = peripheral.wrap("right")
+local tntCraftNumber = 32
 
 -- Function to count the quantity of specified items in a chest/inventory peripheral
 local function countItem(chest, itemMatch)
@@ -48,26 +49,26 @@ while true do
     if TntCount < 128 then
         -- Craft the tnt and drop it in the barrel
         turtle.select(1)
-        takeItem(GunpowderBarrel, "minecraft:gunpowder", 16)
+        takeItem(GunpowderBarrel, "minecraft:gunpowder", tntCraftNumber)
         turtle.select(3)
-        takeItem(GunpowderBarrel, "minecraft:gunpowder", 16)
+        takeItem(GunpowderBarrel, "minecraft:gunpowder", tntCraftNumber)
         turtle.select(6)
-        takeItem(GunpowderBarrel, "minecraft:gunpowder", 16)
+        takeItem(GunpowderBarrel, "minecraft:gunpowder", tntCraftNumber)
         turtle.select(9)
-        takeItem(GunpowderBarrel, "minecraft:gunpowder", 16)
+        takeItem(GunpowderBarrel, "minecraft:gunpowder", tntCraftNumber)
         turtle.select(11)
-        takeItem(GunpowderBarrel, "minecraft:gunpowder", 16)
+        takeItem(GunpowderBarrel, "minecraft:gunpowder", tntCraftNumber)
         turtle.select(2)
-        takeItem(SandChest, "minecraft:sand", 16)
+        takeItem(SandChest, "minecraft:sand", tntCraftNumber)
         turtle.select(5)
-        takeItem(SandChest, "minecraft:sand", 16)
+        takeItem(SandChest, "minecraft:sand", tntCraftNumber)
         turtle.select(7)
-        takeItem(SandChest, "minecraft:sand", 16)
+        takeItem(SandChest, "minecraft:sand", tntCraftNumber)
         turtle.select(10)
-        takeItem(SandChest, "minecraft:sand", 16)
-        turtle.select(16)
-        turtle.craft(16)
-        turtle.drop(16)
+        takeItem(SandChest, "minecraft:sand", tntCraftNumber)
+        turtle.select(tntCraftNumber)
+        turtle.craft(tntCraftNumber)
+        turtle.drop(tntCraftNumber)
     end
 
     -- Empty inventory
