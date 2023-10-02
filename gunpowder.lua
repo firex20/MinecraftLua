@@ -34,7 +34,7 @@ local function pushItem(chestFrom, chestTo, itemMatch, quantity, maxSlots)
         
         if item ~= nil then
             if item.name == itemMatch and item.count >= quantity then
-                peripheral.call(peripheral.getName(chestFrom), "pushItem", peripheral.getName(chestTo), slot, quantity)
+                peripheral.call(peripheral.getName(chestFrom), "pushItems", chestTo, slot, quantity)
                 match = true
             else
                 slot = slot + 1
@@ -48,7 +48,7 @@ end
 while true do
     -- Crear polvora hasta que el barril este lleno
     local gunpowderChest = peripheral.wrap("left")
-    local openCrate = peripheral.wrap("botania:open_crate_1")
+    local openCrate = peripheral.wrap("botania:open_crate_0")
     local flintChest = peripheral.wrap("back")
     local gunpowderLimit = ItemLimit(gunpowderChest)
     local gunpowderCount = countItem(gunpowderChest, "minecraft:gunpowder")
