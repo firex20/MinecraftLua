@@ -22,6 +22,9 @@ local function takeItem(chest, itemMatch, quantity)
         if item.name == itemMatch and item.count >= quantity then
             chest.pushItems(peripheral.getName(DummyChest), slot, quantity, 1)
             turtle.suckDown(quantity)
+            match = true
+        else
+            slot = slot + 1
         end
     end
 end
