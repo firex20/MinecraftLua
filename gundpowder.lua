@@ -69,5 +69,13 @@ while true do
             pushItem(flintChest, openCrate, "minecraft:flint", 64, 9)
         end
         sleep(5)
+
+        gunpowderLimit = ItemLimit(gunpowderChest)
+        gunpowderCount = countItem(gunpowderChest, "minecraft:gunpowder")
+        if gunpowderCount == gunpowderLimit then
+            gunpowderFull = true
+        else
+            gunpowderFull = false
+        end
     end
 end
