@@ -31,6 +31,8 @@ local function takeItem(chest, itemMatch, quantity)
                 chest.pushItems(peripheral.getName(DummyChest), slot, quantity, 1)
                 turtle.suckDown(quantity)
                 match = true
+            else
+                slot = slot + 1
             end
         else
             slot = slot + 1
@@ -43,7 +45,7 @@ while true do
     local TntBarrel = peripheral.wrap("front")
     local SandChest = peripheral.wrap("back")
     local GunpowderBarrel = peripheral.wrap("top")
-    local TntCount = countItem(TntBarrel, "minecraft:gunpowder")
+    local TntCount = countItem(TntBarrel, "minecraft:tnt")
 
     -- Empty inventory
     local slots = {1, 2, 3, 5, 6, 7, 9, 10, 11}
@@ -80,7 +82,7 @@ while true do
         takeItem(SandChest, "minecraft:sand", tntCraftNumber)
         turtle.select(10)
         takeItem(SandChest, "minecraft:sand", tntCraftNumber)
-        turtle.select(tntCraftNumber)
+        turtle.select(16)
         turtle.craft(tntCraftNumber)
         turtle.drop(tntCraftNumber)
     end
