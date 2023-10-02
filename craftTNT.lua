@@ -31,7 +31,7 @@ while true do
     local TntBarrel = peripheral.wrap("front")
     local SandChest = peripheral.wrap("back")
     local GunpowderBarrel = peripheral.wrap("top")
-    local TntCount = countItem(GunpowderBarrel, "minecraft:gunpowder")
+    local TntCount = countItem(TntBarrel, "minecraft:tnt")
 
     if TntCount < 128 then
         -- Craft the tnt and drop it in the barrel
