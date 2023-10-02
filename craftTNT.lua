@@ -25,11 +25,13 @@ local function takeItem(chest, itemMatch, quantity)
     end
 
     while match == false do
-        local item = chest.getItemDetail(slot)
         if slot > 27 then
             slot = 1
             sleep(5)
         end
+        
+        local item = chest.getItemDetail(slot)
+        
         if item ~= nil then
             if item.name == itemMatch and item.count >= quantity then
                 chest.pushItems(peripheral.getName(DummyChest), slot, quantity, 1)
