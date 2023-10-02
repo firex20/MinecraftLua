@@ -34,7 +34,6 @@ local function takeItem(chest, itemMatch, quantity)
             end
         else
             slot = slot + 1
-        
         end
     end
 end
