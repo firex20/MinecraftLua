@@ -46,6 +46,21 @@ while true do
     local GunpowderBarrel = peripheral.wrap("top")
     local TntCount = countItem(TntBarrel, "minecraft:gunpowder")
 
+    -- Empty inventory
+    local slots = {1, 2, 3, 5, 6, 7, 9, 10, 11}
+    local checkSlot = DummyChest.getItemDetail(1)
+    
+    if checkSlot ~= nil then
+        DummyChest.pushItems(peripheral.getName(Trash), 1, 64, 1)
+    end
+
+    for key, slot in pairs(slots)
+    do
+        turtle.select(slot)
+        turtle.dropDown()
+        DummyChest.pushItems(peripheral.getName(Trash), 1, 64, 1)
+    end
+
     if TntCount < 128 then
         -- Craft the tnt and drop it in the barrel
         turtle.select(1)
@@ -69,21 +84,6 @@ while true do
         turtle.select(tntCraftNumber)
         turtle.craft(tntCraftNumber)
         turtle.drop(tntCraftNumber)
-    end
-
-    -- Empty inventory
-    local slots = {1, 2, 3, 5, 6, 7, 9, 10, 11}
-    local checkSlot = DummyChest.getItemDetail(1)
-    
-    if checkSlot ~= nil then
-        DummyChest.pushItems(peripheral.getName(Trash), 1, 64, 1)
-    end
-
-    for key, slot in pairs(slots)
-    do
-        turtle.select(slot)
-        turtle.dropDown()
-        DummyChest.pushItems(peripheral.getName(Trash), 1, 64, 1)
     end
 
     sleep(10)
